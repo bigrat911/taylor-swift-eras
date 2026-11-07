@@ -6,8 +6,16 @@ for era in music.values():
     for t in era["tracks"]:
         m = re.search(r"[?&]i=(\d+)", t["url"]); t["id"] = m.group(1) if m else None
 credits = json.load(open(os.path.join(ROOT, "data/credits.json")))
+# 记录照片宽高，页面提前占位，避免懒加载图片撑开页面导致跳转错位
+from PIL import Image
+sizes = {}
+for k in credits:
+    fp = os.path.join(ROOT, "assets/photos", k + ".jpg")
+    if os.path.exists(fp):
+        sizes[k] = Image.open(fp).size
 with open(os.path.join(ROOT, "js/generated.js"), "w") as f:
     f.write("// 由 tools/build_data.py 生成，请勿手改\n")
     f.write("window.MUSIC = " + json.dumps(music, ensure_ascii=False) + ";\n")
     f.write("window.CREDITS = " + json.dumps(credits, ensure_ascii=False) + ";\n")
+    f.write("window.PHOTO_SIZE = " + json.dumps(sizes) + ";\n")
 print("ok")

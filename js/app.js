@@ -56,8 +56,8 @@
         </button><a class="track__link" href="${t.url}" target="_blank" rel="noopener" aria-label="在 Apple Music 听完整版 ${esc(c.base)}">完整版</a></li>`;
     }).join("");
     const photo = e.photo
-      ? `<figure class="era__photo"><div class="frame"><img src="assets/photos/${e.photo}.jpg" alt="${esc(e.photoCap)}" loading="lazy"></div><figcaption>${esc(e.photoCap)}</figcaption></figure>`
-      : `<figure class="era__photo era__photo--marquee"><div class="frame"><img src="${coverOf(e.key)}" alt="《${esc(e.title)}》专辑封面" loading="lazy"></div><figcaption>专辑封面</figcaption></figure>`;
+      ? `<figure class="era__photo"><div class="frame"><img src="assets/photos/${e.photo}.jpg" alt="${esc(e.photoCap)}" width="${window.PHOTO_SIZE[e.photo][0]}" height="${window.PHOTO_SIZE[e.photo][1]}" loading="lazy"></div><figcaption>${esc(e.photoCap)}</figcaption></figure>`
+      : `<figure class="era__photo era__photo--marquee"><div class="frame"><img src="${coverOf(e.key)}" alt="《${esc(e.title)}》专辑封面" width="1200" height="1200" loading="lazy"></div><figcaption>专辑封面</figcaption></figure>`;
     return `
     <section class="era era--${e.key}" id="era-${e.key}" data-era="${e.key}" style="--prev:${prev};--bg:${THEME[e.key].bg}" aria-labelledby="t-${e.key}">
       <div class="era__inner">
@@ -74,7 +74,7 @@
         </div>
         <blockquote class="era__lyric"><p>${esc(e.lyric)}</p><cite>${esc(e.lyricSrc)}</cite></blockquote>
         <div class="era__record">
-          <div class="sleeve"><span class="vinyl"><span class="vinyl__label" style="background-image:url('${coverOf(e.key)}')"></span></span><img src="${coverOf(e.key)}" alt="《${esc(e.title)}》封面" loading="lazy"></div>
+          <div class="sleeve"><span class="vinyl"><span class="vinyl__label" style="background-image:url('${coverOf(e.key)}')"></span></span><img src="${coverOf(e.key)}" alt="《${esc(e.title)}》封面" width="1200" height="1200" loading="lazy"></div>
           <ol class="tracks">${tracks}</ol>
         </div>
         <ol class="era__moments">${e.moments.map((m) => `<li><time>${m[0]}</time><span>${esc(m[1])}</span></li>`).join("")}</ol>
@@ -92,7 +92,7 @@
   $("#mastersShelf").innerHTML = masterKeys.map((k, i) => {
     const e = ERAS.find((x) => x.key === k);
     const tv = ["fearless", "speaknow", "red", "1989"].includes(k);
-    return `<div class="master" style="--i:${i}"><img src="${coverOf(k)}" alt="《${esc(e.title)}》${tv ? "（Taylor's Version）" : ""}封面" loading="lazy"><span class="master__lock" aria-hidden="true"></span><p>${esc(e.title)}${tv ? "<small>已重录</small>" : ""}</p></div>`;
+    return `<div class="master" style="--i:${i}"><img src="${coverOf(k)}" alt="《${esc(e.title)}》${tv ? "（Taylor's Version）" : ""}封面" width="1200" height="1200" loading="lazy"><span class="master__lock" aria-hidden="true"></span><p>${esc(e.title)}${tv ? "<small>已重录</small>" : ""}</p></div>`;
   }).join("");
   $("#mastersList").innerHTML = window.MASTERS.map((m) => `<li><time>${m[0]}</time><p>${esc(m[1])}</p></li>`).join("");
 
