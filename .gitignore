@@ -1,0 +1,17 @@
+__pycache__/
+.DS_Store
+# 备选照片：网站没用到，不上传
+assets/photos/1989_a.jpg
+assets/photos/1989_b.jpg
+assets/photos/debut_b.jpg
+assets/photos/evermore_a.jpg
+assets/photos/fearless_b.jpg
+assets/photos/folklore_a.jpg
+assets/photos/globes_2024.jpg
+assets/photos/lover_b.jpg
+assets/photos/midnights_b.jpg
+assets/photos/red_a.jpg
+assets/photos/reputation_a.jpg
+assets/photos/speaknow_a.jpg
+assets/photos/ttpd_a.jpg
+assets/photos/vma_2023.jpg
